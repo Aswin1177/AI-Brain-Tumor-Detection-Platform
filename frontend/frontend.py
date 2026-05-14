@@ -9,7 +9,7 @@ if uploaded is not None:
     image=cv2.imdecode(image,1)
     st.image(image, caption="Uploaded image", width='stretch')
     response = requests.post(
-        "http://127.0.0.1:8000/predict",
+        "http://backend:8000/predict",
         files={
             "file": uploaded.getvalue()
         }

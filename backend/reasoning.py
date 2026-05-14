@@ -1,5 +1,8 @@
-import ollama
-
+from dotenv import load_dotenv
+from groq import Groq
+import os
+load_dotenv()
+client = Groq(api_key=os.environ.get("GROQ_API_KEY"))
 def generate_reasoning(predicted_class, confidence):
 
     prompt = f"""
@@ -10,23 +13,30 @@ def generate_reasoning(predicted_class, confidence):
     Confidence: {confidence*100:.2f}%
 
     Generate explanation for:
-    1. What this tumor type means
-    2. How it is spread, common characteristics and measures that help cure
-    3. Why the AI model may have predicted this
-    4. Mention that this is AI-assisted analysis and its trained on a less amount of data
-    5. Recommend consultation with medical professionals
+    
+     What this tumor type means
+
+     How it is spread and common characteristics
+
+     Measures that helps cure
+
+     Why the AI model may have predicted this
+
+     Mention that this is AI-assisted analysis and its trained on a less amount of data
+
+     Recommend consultation with medical professionals
 
     Keep explanation simple and professional.
     """
 
-    response = ollama.chat(
-        model='llama3.2:1b',
+    response = client.chat.completions.create(
         messages=[
             {
                 'role': 'user',
                 'content': prompt
             }
         ]
+        ,model='llama-3.1-8b-instant',
     )
 
-    return response['message']['content']
+    return response.choices[0].message.content

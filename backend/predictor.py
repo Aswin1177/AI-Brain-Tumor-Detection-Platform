@@ -4,14 +4,14 @@ import cv2
 from tensorflow.keras.models import load_model
 from tensorflow.keras.applications.resnet50 import preprocess_input
 
+
 model = load_model("Brain_tumour_model.h5")
 
 categories = [
     'pituitary',
     'no_tumor',
     'glioma',
-    'meningioma'
-]
+    'meningioma']
 
 def predict_mri(image):
     image = cv2.resize(image, (224,224))
