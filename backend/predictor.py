@@ -5,7 +5,7 @@ from tensorflow.keras.models import load_model
 from tensorflow.keras.applications.resnet50 import preprocess_input
 
 
-model = load_model("Brain_tumour_model.h5")
+model = load_model("/models/Brain_tumour_model.h5")
 
 categories = [
     'pituitary',
