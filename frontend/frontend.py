@@ -2,7 +2,7 @@ import streamlit as st
 import requests
 import numpy as np
 import cv2
-st.title("Brain Tumour Detection and Reasoning")
+st.title("Brain Tumour Detection and Reasoning by Aswin")
 uploaded=st.file_uploader("Upload MRI image",type=['jpg','png','jpeg'])
 if uploaded is not None:
     image=np.asarray(bytearray(uploaded.read()),dtype=np.uint8)
