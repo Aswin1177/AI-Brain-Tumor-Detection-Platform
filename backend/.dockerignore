@@ -1,0 +1,6 @@
+__pycache__
+*.pyc
+.env
+.git
+.gitignore
+Brain_tumour_model.h5
