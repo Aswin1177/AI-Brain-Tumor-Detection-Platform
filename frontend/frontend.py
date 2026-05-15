@@ -7,7 +7,7 @@ uploaded=st.file_uploader("Upload MRI image",type=['jpg','png','jpeg'])
 if uploaded is not None:
     image=np.asarray(bytearray(uploaded.read()),dtype=np.uint8)
     image=cv2.imdecode(image,1)
-    st.image(image, caption="Uploaded image", width='stretch')
+    st.image(image, caption="Uploaded image", use_column_width=True)
     response = requests.post(
         "http://backend:8000/predict",
         files={
